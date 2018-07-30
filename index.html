@@ -9,6 +9,7 @@
 	    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 	    <Script>
 	    	$(window).on("load", function() {
+
 	    		var s = $("h1").text();
 	    		var random = "";
 	    		for(var i = 0; i < s.length; i++)
@@ -18,14 +19,17 @@
 	    			else
 	    				random += Math.random().toString(36)[2];
 	    		}
-
+	    		var clicked = false;
 				var interval = setInterval( function(){
+					if(!clicked)
+						window.scrollTo(0, 0);
 				    $("h1").html(random);
 				    if(random==s)
 				    {
 				    	var time = 500;
 				    	 $( "h1" ).stop().fadeTo(time, 0, function(){
 				        	$( "h1" ).delay(time).html("Let's change the world").fadeTo(time, 1);
+				        	$("img").delay(time).fadeTo(time,1);
 				    	});
 				    	clearInterval(interval);
 				    }
@@ -33,6 +37,11 @@
 				    	if(random[i]!=s[i])
 				    		random = random.substr(0,i) + Math.random().toString(36)[2] + random.substr(i+1);
 				}, 90);
+
+				$("img").click(function(){
+					clicked = true;
+					$("html,body").animate({scrollTop: $(window).height()}, 1000); 
+				});
 	    	});
 	    </Script>
 	    <style>
@@ -61,7 +70,7 @@
 			{
 				padding:0; 
 				margin:0;
-				overflow: hidden; 
+				overflow: hidden;
 			}
 			html,body {
 			  font-family: 'Raleway', sans-serif;
@@ -81,9 +90,22 @@
 			text-align: center;
 			vertical-align: middle;
 			}
-			h1
+			#testing
 			{
-				/*color:#c3a343;*/
+				width:100%;
+				height:100%;
+				z-index: 3;
+				position: absolute;
+				top: 100%;
+				background-color: white;
+			}
+			img
+			{
+				position: absolute;
+				top: 75%;
+				left: 45%;
+				cursor: pointer;
+				opacity: 0;
 			}
 		</style>
 	</head>
@@ -96,6 +118,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
 		<h1>syed pervaiz</h1>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
-		
+		<img src="down.png"/ height="128px" width="128px">
+		<div id="testing"></div>
 	</body>
 </html>
