@@ -29,7 +29,7 @@
 				    	var time = 500;
 				    	 $( "h1" ).stop().fadeTo(time, 0, function(){
 				        	$( "h1" ).delay(time).html("Let's change the world").fadeTo(time, 1);
-				        	$("img").delay(time).fadeTo(time,1);
+				        	$("#down").delay(time).fadeTo(time,1);
 				    	});
 				    	clearInterval(interval);
 				    }
@@ -38,7 +38,7 @@
 				    		random = random.substr(0,i) + Math.random().toString(36)[2] + random.substr(i+1);
 				}, 90);
 
-				$("img").click(function(){
+				$("#down").click(function(){
 					clicked = true;
 					$("html,body").animate({scrollTop: $(window).height()}, 1000); 
 				});
@@ -79,16 +79,16 @@
 			}
 			h1 
 			{
-			font-weight: 200;
-			margin: 0.4em 0; font-size: 3.5em; left: 0;
-		    line-height: 200px;
-		    margin: auto;
-		    margin-top: -100px;
-		    position: absolute;
-		    top: 50%;
-		    width: 100%;
-			text-align: center;
-			vertical-align: middle;
+				font-weight: 200;
+				margin: 0.4em 0; font-size: 3.5em; left: 0;
+			    line-height: 200px;
+			    margin: auto;
+			    margin-top: -100px;
+			    position: absolute;
+			    top: 50%;
+			    width: 100%;
+				text-align: center;
+				vertical-align: middle;
 			}
 			#testing
 			{
@@ -97,15 +97,38 @@
 				z-index: 3;
 				position: absolute;
 				top: 100%;
-				background-color: white;
+				background-color: black;
 			}
-			img
+			#down
 			{
 				position: absolute;
 				top: 75%;
-				left: 45%;
+				left: 47%;
 				cursor: pointer;
 				opacity: 0;
+			}
+			.bounce {
+				animation: bounce 3s infinite;
+			}
+			@keyframes bounce {
+			  0%, 20%, 50%, 80%, 100% {
+			    -moz-transform: translateY(0);
+			    -ms-transform: translateY(0);
+			    -webkit-transform: translateY(0);
+			    transform: translateY(0);
+			  }
+			  40% {
+			    -moz-transform: translateY(-30px);
+			    -ms-transform: translateY(-30px);
+			    -webkit-transform: translateY(-30px);
+			    transform: translateY(-30px);
+			  }
+			  60% {
+			    -moz-transform: translateY(-15px);
+			    -ms-transform: translateY(-15px);
+			    -webkit-transform: translateY(-15px);
+			    transform: translateY(-15px);
+			  }
 			}
 		</style>
 	</head>
@@ -118,7 +141,11 @@
 		<link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
 		<h1>syed pervaiz</h1>
 		<script type="text/javascript" src="js/materialize.min.js"></script>
-		<img src="down.png"/ height="128px" width="128px">
-		<div id="testing"></div>
+		<img id="down" class="bounce" src="down.png" height="64px" width="64px"/>
+		<div id="testing">
+			<h2>Resume</h2>
+			<h2>About me</h2>
+			<h2>Contact</h2>
+		</div>
 	</body>
 </html>
